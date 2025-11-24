@@ -6,17 +6,16 @@
 /*   By: zzehra <zzehra@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 16:34:27 by zzehra            #+#    #+#             */
-/*   Updated: 2025/11/23 14:56:02 by zzehra           ###   ########.fr       */
+/*   Updated: 2025/11/24 15:10:31 by zzehra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include <stdio.h>
 
 int main(int argc, char **argv)
 {
     t_vars  *var;
-    t_map_3d   *mapi;
+    t_map   *mapi;
     int y_len;
     int x_len;
 
@@ -58,14 +57,12 @@ int main(int argc, char **argv)
     var = malloc(sizeof(t_vars));
     if(!var)
         return (0);
-    window_settings(&var, x_len, y_len);
+    window_settings(&var, mapi, x_len, y_len);
     
-    /*frees mapi.map
-    i = 0;
+
+    free(mapi);
+
     
-    while(i<y_len)
-        free(mapi.map[i++]);
-    free(mapi.map);*/
     
     mlx_loop((*var).mlx);
     return (0);

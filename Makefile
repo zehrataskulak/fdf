@@ -2,7 +2,7 @@ NAME = fdf
 
 CFLAGS =  -lm -g
 
-SRCS = main.c read_map.c window_settings.c find_isometric.c \
+SRCS = main.c read_map.c window_settings.c find_isometric.c find_len.c put_dots_draw_lines.c\
 		get_next_line/get_next_line_utils.c get_next_line/get_next_line.c 
 
 OBJS = $(SRCS:.c=.o)
