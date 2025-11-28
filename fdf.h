@@ -6,7 +6,7 @@
 /*   By: zzehra <zzehra@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 16:34:48 by zzehra            #+#    #+#             */
-/*   Updated: 2025/11/25 00:03:53 by zzehra           ###   ########.fr       */
+/*   Updated: 2025/11/26 12:46:39 by zzehra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,19 +53,26 @@ typedef struct s_draw_lines_vars {
     int chck_x_y_cntrl;
 } t_draw_lines_vars ;
 
-#ifndef SIZE_X
-#define SIZE_X 800
-#endif 
+typedef struct s_max_min {
+    int x_max;
+    int x_min;
+    int y_max;
+    int y_min;
+} t_max_min ;
 
-#ifndef SIZE_Y
+#define SIZE_X 800
 #define SIZE_Y 600
-#endif
+
+#define INT_MAX 2147483647
+#define INT_MIN -2147483648
+
  
 
 void    window_settings(t_vars **var, t_map *map, int x_len, int y_len);
 int find_x_or_y(char *argv, char len);
 void    read_map(char *argv, t_map **arr_final);
 void    find_isometric(t_map **map, int x_len, int y_len);
+void scale_map(t_map **map, int x_times_y);
 void put_dots(t_vars *var, t_map *map, int x_len, int y_len);
 void draw_lines(t_vars *var, t_map *map, int x_len, int y_len);
 

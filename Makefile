@@ -1,8 +1,8 @@
 NAME = fdf
 
-CFLAGS =  -lm -g
+CFLAGS =  -Wall -Wextra -Werror -lm
 
-SRCS = main.c read_map.c window_settings.c find_isometric.c find_len.c put_dots_draw_lines.c\
+SRCS = main.c read_map.c window_settings.c find_isometric.c find_len.c put_dots_draw_lines.c scale_map.c\
 		get_next_line/get_next_line_utils.c get_next_line/get_next_line.c 
 
 OBJS = $(SRCS:.c=.o)

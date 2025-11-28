@@ -6,7 +6,7 @@
 /*   By: zzehra <zzehra@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 17:13:16 by zzehra            #+#    #+#             */
-/*   Updated: 2025/11/24 15:11:09 by zzehra           ###   ########.fr       */
+/*   Updated: 2025/11/25 16:09:51 by zzehra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void    split_numbers(char *str, t_map *arr_final, int i, int *indx)
 {
     int j;
     char **arr_split;
-    char *tmp;
     char **split_color;
 
     j = 0;
@@ -94,13 +93,11 @@ void    read_map(char *argv, t_map **arr_final)
 {
     int y_len;
     int x_len;
-    int i;
-    
-    i = 0;
+
     x_len = find_x_or_y(argv, 'x');
     y_len = find_x_or_y(argv, 'y');
     printf("x_len: %d, y_len:%d\n", x_len, y_len);
-    *arr_final = malloc(sizeof(t_map) * (x_len * y_len));
+    *arr_final = ft_calloc((x_len * y_len), sizeof(t_map));
     if (!*arr_final)
         return ;
     copy_as_int(argv, *arr_final, x_len, y_len);

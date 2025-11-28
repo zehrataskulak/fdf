@@ -6,7 +6,7 @@
 /*   By: zzehra <zzehra@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 16:34:27 by zzehra            #+#    #+#             */
-/*   Updated: 2025/11/24 15:10:31 by zzehra           ###   ########.fr       */
+/*   Updated: 2025/11/26 09:31:42 by zzehra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int main(int argc, char **argv)
     t_map   *mapi;
     int y_len;
     int x_len;
-
+    (void)argc;
     
     x_len = find_x_or_y(argv[1], 'x');
     y_len = find_x_or_y(argv[1], 'y');
@@ -27,7 +27,7 @@ int main(int argc, char **argv)
 
     // only for printing the values
     int indx = 0;
-    for(int i = 0; i < 10; i++)
+    /*for(int i = 0; i < 10; i++)
     {
         for(int j = 0; j < 10; j++)
         {
@@ -39,7 +39,7 @@ int main(int argc, char **argv)
     
 
     printf("\n");
-    printf("\n");
+    printf("\n");*/
     find_isometric(&mapi, x_len, y_len);
 
     indx = 0;
