@@ -6,7 +6,7 @@
 /*   By: zzehra <zzehra@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 16:34:27 by zzehra            #+#    #+#             */
-/*   Updated: 2025/11/26 09:31:42 by zzehra           ###   ########.fr       */
+/*   Updated: 2025/12/04 16:36:38 by zzehra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,21 +43,35 @@ int main(int argc, char **argv)
     find_isometric(&mapi, x_len, y_len);
 
     indx = 0;
-    for(int i = 0; i < 10; i++)
+    /*while(indx < x_len*y_len)
     {
-        for(int j = 0; j < 10; j++)
-        {
-            printf("%d,%d ", mapi[indx].iso_x, mapi[indx].iso_y);
+        printf("%d,%d ", mapi[indx].iso_x, mapi[indx].iso_y);
             indx++;
-        }
-        printf("\n");
-    }
+    }*/
+    
     
     
     var = malloc(sizeof(t_vars));
     if(!var)
         return (0);
     window_settings(&var, mapi, x_len, y_len);
+    
+
+    for(int i = 0; i < 10; i++)
+    {
+        for(int j = 0; j < 10; j++)
+        {
+            //printf("%d,%d ", mapi[indx].iso_x, mapi[indx].iso_y);
+            indx++;
+        }
+        printf("\n");
+    }
+    
+    
+    /*var = malloc(sizeof(t_vars));
+    if(!var)
+        return (0);
+    window_settings(&var, mapi, x_len, y_len);*/
     
 
     free(mapi);

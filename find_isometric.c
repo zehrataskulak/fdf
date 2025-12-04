@@ -6,13 +6,13 @@
 /*   By: zzehra <zzehra@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 11:03:23 by zzehra            #+#    #+#             */
-/*   Updated: 2025/11/26 12:45:12 by zzehra           ###   ########.fr       */
+/*   Updated: 2025/12/04 16:38:47 by zzehra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-/*double find_scale(int x_len, int y_len)
+double find_scale(int x_len, int y_len)
 {
     int max_len;
     double scale;
@@ -28,30 +28,21 @@
         scale = (SIZE_Y / 2.0) / (double)max_len;
     }
     return (scale);
-}*/
+}
 
 
-void    find_isometric_0(t_map **map, int x_len, int y_len)
+void    find_isometric_0(t_map **map, int x_times_y)
 {
-    int x;
-    int y;
     int indx;
-    //double scale;
-    
-    y = 0;
+    double scale;
+
     indx = 0;
-    //scale = find_scale(x_len, y_len);
-    while (y < y_len)
+    scale = 10;
+    while (indx < x_times_y)
     {
-        x = 0;
-        while(x < x_len)
-        {
-            (*map)[indx].iso_x = ((*map)[indx].x - (*map)[indx].y) * cos(0.523599);
-            (*map)[indx].iso_y = ((*map)[indx].x + (*map)[indx].y) * sin(0.523599) - (*map)[indx].z * ( 0.2);
-            indx++;
-            x++;
-        }
-        y++;
+        (*map)[indx].iso_x = ((*map)[indx].x - (*map)[indx].y) * cos(0.523599) * scale;
+        (*map)[indx].iso_y = ((*map)[indx].x + (*map)[indx].y) * sin(0.523599) * scale - (*map)[indx].z * ( 0.2) * scale;
+        indx++;
     }
 }
 
@@ -90,8 +81,7 @@ void find_isometric(t_map **map, int x_len, int y_len)
 
     indx = 0;
     x_times_y = x_len * y_len;
-    //find_isometric_0(map, x_len, y_len);
-    /* scale the map to fit in the window */
+    find_isometric_0(map, x_times_y);
     scale_map(map, x_times_y);
     find_shift_amount(*map, &x_shift, &y_shift, x_times_y);
     while (indx < x_times_y)
@@ -100,5 +90,4 @@ void find_isometric(t_map **map, int x_len, int y_len)
         (*map)[indx].iso_y += y_shift;
         indx++;
     }
-    //scale_map(map, x_times_y);
 }
