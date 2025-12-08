@@ -13,7 +13,6 @@ all : $(LIBS) $(LIBS1) $(NAME)
 
 $(NAME): $(OBJS)
 	cc $(CFLAGS) $(OBJS) $(LIBS) -lX11 -lXext -o $(NAME)
-	rm -f *.o
 
 $(LIBS):
 	make -C libft

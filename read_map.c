@@ -6,7 +6,7 @@
 /*   By: zzehra <zzehra@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 17:13:16 by zzehra            #+#    #+#             */
-/*   Updated: 2025/11/25 16:09:51 by zzehra           ###   ########.fr       */
+/*   Updated: 2025/12/08 20:18:24 by zzehra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 int	ft_atoi_hex(const char *str)
 {
-    int num = 0;
-    int i = 0;
+    int num;
+    int i;
 
-    // "0x" varsa atla
+    num = 0;
+    i = 0;
     if (str[0] == '0' && (str[1] == 'x' || str[1] == 'X'))
         i = 2;
-
     while (str[i])
     {
         num *= 16;
@@ -35,7 +35,7 @@ int	ft_atoi_hex(const char *str)
     return num;
 }
 
-void    split_numbers(char *str, t_map *arr_final, int i, int *indx)
+void    split_numbers(char *str, t_map *map, int i, int *indx)
 {
     int j;
     char **arr_split;
@@ -45,18 +45,18 @@ void    split_numbers(char *str, t_map *arr_final, int i, int *indx)
     arr_split = ft_split(str, ' ');
     while(arr_split[j] && (arr_split[j][0] != '\n'))
     {
-        arr_final[*indx].color = ft_atoi_hex("0xFFFFFF");
+        map[*indx].color = ft_atoi_hex("0xFFFFFF");
         if(ft_strchr(arr_split[j], ','))
         {
             split_color = ft_split(arr_split[j], ',');
-            arr_final[*indx].color = ft_atoi_hex(split_color[1]);
+            map[*indx].color = ft_atoi_hex(split_color[1]);
             free(split_color[0]);
             free(split_color[1]);
             free(split_color);
         }
-        arr_final[*indx].z = ft_atoi(arr_split[j]);
-        arr_final[*indx].y = i;
-        arr_final[(*indx)++].x = j++;
+        map[*indx].z = ft_atoi(arr_split[j]);
+        map[*indx].y = i;
+        map[(*indx)++].x = j++;
     }
     j = 0;
     while (arr_split[j])
@@ -64,7 +64,7 @@ void    split_numbers(char *str, t_map *arr_final, int i, int *indx)
     free(arr_split);
 }
 
-void    copy_as_int(char *argv, t_map *arr_final, int x_len, int y_len)
+void    copy_as_int(char *argv, t_map *map, int x_len, int y_len)
 {
     int fd;
     char *str;
@@ -77,28 +77,20 @@ void    copy_as_int(char *argv, t_map *arr_final, int x_len, int y_len)
     str = get_next_line(fd);
     while(str)
     {
-        
-        split_numbers(str, arr_final, i, &indx);
+        split_numbers(str, map, i, &indx);
         free(str);
         str = get_next_line(fd);
         i++;
-        /* stop when we've read the expected number of elements (guard against malformed files) */
         if (indx >= x_len * y_len)
             break;
     }
     close(fd);
 }
 
-void    read_map(char *argv, t_map **arr_final)
+void    read_map(char *argv, t_map **map, int x_len, int y_len)
 {
-    int y_len;
-    int x_len;
-
-    x_len = find_x_or_y(argv, 'x');
-    y_len = find_x_or_y(argv, 'y');
-    printf("x_len: %d, y_len:%d\n", x_len, y_len);
-    *arr_final = ft_calloc((x_len * y_len), sizeof(t_map));
-    if (!*arr_final)
+    *map = ft_calloc((x_len * y_len), sizeof(t_map));
+    if (!*map)
         return ;
-    copy_as_int(argv, *arr_final, x_len, y_len);
+    copy_as_int(argv, *map, x_len, y_len);
 }

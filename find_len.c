@@ -6,7 +6,7 @@
 /*   By: zzehra <zzehra@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/23 17:44:27 by zzehra            #+#    #+#             */
-/*   Updated: 2025/11/24 15:05:24 by zzehra           ###   ########.fr       */
+/*   Updated: 2025/12/08 20:23:27 by zzehra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ int find_x_or_y(char *argv, char len)
     {
         y_len = 0;
         fd = open(argv, O_RDONLY);
+        if(fd < 0)
+            return (0);
         str = get_next_line(fd);
         x_len = find_x_0(str);
         while(str)
