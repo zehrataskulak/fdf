@@ -6,7 +6,7 @@
 /*   By: zzehra <zzehra@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 16:34:48 by zzehra            #+#    #+#             */
-/*   Updated: 2025/12/08 20:47:55 by zzehra           ###   ########.fr       */
+/*   Updated: 2025/12/09 17:33:14 by zzehra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ typedef struct s_max_min
 #  define INT_MIN -2147483648
 # endif
 
-void	window_settings(t_vars **var, t_map *map, int x_len, int y_len);
+void	window_settings(t_vars *var, t_map *map, int x_len, int y_len);
 int		find_x_or_y(char *argv, char len);
 void	read_map(char *argv, t_map **map, int x_len, int y_len);
 void	find_isometric(t_map *map, int x_len, int y_len);
