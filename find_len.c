@@ -14,49 +14,49 @@
 
 int	find_x_0(char *str)
 {
-	int	x_len;
-    char **splitted_x;
-    int i;
+	int		x_len;
+	char	**splitted_x;
+	int		i;
 
-    i = 0;
-    x_len = 0;
-    splitted_x = ft_split(str, ' ');
-    while(splitted_x[i])
-    {
-        if(splitted_x[i][0] != '\n')
-            x_len++;
-        i++;
-    }   
-    i = 0;
-    while(splitted_x[i])
-        free(splitted_x[i++]);
-    free(splitted_x);
+	i = 0;
+	x_len = 0;
+	splitted_x = ft_split(str, ' ');
+	while (splitted_x[i])
+	{
+		if (splitted_x[i][0] != '\n')
+			x_len++;
+		i++;
+	}
+	i = 0;
+	while (splitted_x[i])
+		free(splitted_x[i++]);
+	free(splitted_x);
 	return (x_len);
 }
 
-int find_x_or_y(char *argv, char len)
+int	find_x_or_y(char *argv, char len)
 {
-    int fd;
-    char *str;
-    int x_len;
-    static int y_len;
-    
-    if(len == 'x')
-    {
-        y_len = 0;
-        fd = open(argv, O_RDONLY);
-        if(fd < 0)
-            return (0);
-        str = get_next_line(fd);
-        x_len = find_x_0(str);
-        while(str)
-        {
-            y_len++;
-            free(str);
-            str = get_next_line(fd);
-        }
-        close(fd);
-        return (x_len);
-    }
-    return(y_len);
+	int			fd;
+	int			x_len;
+	static int	y_len;
+	char		*str;
+
+	if (len == 'x')
+	{
+		y_len = 0;
+		fd = open(argv, O_RDONLY);
+		if (fd < 0)
+			return (0);
+		str = get_next_line(fd);
+		x_len = find_x_0(str);
+		while (str)
+		{
+			y_len++;
+			free(str);
+			str = get_next_line(fd);
+		}
+		close(fd);
+		return (x_len);
+	}
+	return (y_len);
 }
