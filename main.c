@@ -6,7 +6,7 @@
 /*   By: zzehra <zzehra@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 16:34:27 by zzehra            #+#    #+#             */
-/*   Updated: 2025/12/09 17:31:34 by zzehra           ###   ########.fr       */
+/*   Updated: 2025/12/11 00:22:06 by zzehra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,12 @@ void	get_len_check_map(char *argv, int argc, int *x_len, int *y_len)
 	{
 		write(2, "Invalid number of argument!\n", 28);
 		exit(1);
+	}
+	if (ft_strlen(argv) < 4 || ft_strncmp(argv
+			+ ft_strlen(argv) - 4, ".fdf", 4) != 0)
+	{
+		write(1, "Enter .fdf file!", 16);
+		exit(0);
 	}
 	(*x_len) = find_x_or_y(argv, 'x');
 	if ((*x_len) == 0)

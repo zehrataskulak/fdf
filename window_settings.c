@@ -6,7 +6,7 @@
 /*   By: zzehra <zzehra@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 14:56:15 by zzehra            #+#    #+#             */
-/*   Updated: 2025/12/09 17:32:27 by zzehra           ###   ########.fr       */
+/*   Updated: 2025/12/12 02:47:03 by zzehra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,9 @@ void	window_settings(t_vars *var, t_map *map, int x_len, int y_len)
 	var->mlx = mlx_init();
 	var->win = mlx_new_window(var->mlx, SIZE_X, SIZE_Y, "FDF");
 	var->img = mlx_new_image(var->mlx, SIZE_X, SIZE_Y);
-	var->addr = mlx_get_data_addr(var->img, &var->bpp,
-			&var->line_len, &var->endian);
-	put_dots(var, map, x_len, y_len);
-	draw_lines(var, map, x_len, y_len);
+	var->addr
+		= mlx_get_data_addr(var->img, &var->bpp, &var->line_len, &var->endian);
+	draw_lines(*var, map, x_len, y_len);
 	mlx_put_image_to_window(var->mlx, var->win, var->img, 0, 0);
 	mlx_hook(var->win, 17, 0, close_window_cross, var);
 	mlx_key_hook(var->win, close_window_esc, var);

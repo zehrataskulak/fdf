@@ -6,7 +6,7 @@
 /*   By: zzehra <zzehra@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 16:34:48 by zzehra            #+#    #+#             */
-/*   Updated: 2025/12/09 17:33:14 by zzehra           ###   ########.fr       */
+/*   Updated: 2025/12/12 01:35:14 by zzehra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,6 @@ int		find_x_or_y(char *argv, char len);
 void	read_map(char *argv, t_map **map, int x_len, int y_len);
 void	find_isometric(t_map *map, int x_len, int y_len);
 double	scale_map(t_map *map, int x_times_y);
-void	put_dots(t_vars *var, t_map *map, int x_len, int y_len);
-void	draw_lines(t_vars *var, t_map *map, int x_len, int y_len);
+void	draw_lines(t_vars var, t_map *map, int x_len, int y_len);
 
 #endif
