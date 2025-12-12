@@ -1,6 +1,6 @@
 NAME = fdf
 
-CFLAGS =  -Wall -Wextra -Werror -lm
+CFLAGS =  -Wall -Wextra -Werror
 
 SRCS = main.c read_map.c window_settings.c find_isometric.c find_len.c put_dots_draw_lines.c scale_map.c\
 		get_next_line/get_next_line_utils.c get_next_line/get_next_line.c 
@@ -12,7 +12,7 @@ LIBS = libft/libft.a minilibx-linux/libmlx.a
 all : $(LIBS) $(LIBS1) $(NAME)
 
 $(NAME): $(OBJS)
-	cc $(CFLAGS) $(OBJS) $(LIBS) -lX11 -lXext -o $(NAME)
+	cc $(CFLAGS) $(OBJS) $(LIBS) -lX11 -lXext -o $(NAME) -lm
 
 $(LIBS):
 	make -C libft

@@ -6,7 +6,7 @@
 /*   By: zzehra <zzehra@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 16:34:48 by zzehra            #+#    #+#             */
-/*   Updated: 2025/12/12 01:35:14 by zzehra           ###   ########.fr       */
+/*   Updated: 2025/12/12 10:24:37 by zzehra           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,11 @@ typedef struct s_max_min
 }	t_max_min;
 
 # ifndef SIZE_X
-#  define SIZE_X 800
+#  define SIZE_X 1300
 # endif
 
 # ifndef SIZE_Y
-#  define SIZE_Y 500
+#  define SIZE_Y 800
 # endif
 
 # ifndef INT_MAX
